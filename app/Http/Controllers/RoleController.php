@@ -54,11 +54,13 @@ class RoleController extends Controller
             ], 401);
         }
 
-        $permission = Permission::where('name', $request->permission)->first();
+        $permission = Permission::create(['name' => $request->permission]);
         $role = Role::create([
             'name' => $request->name,
+
         ])->syncPermissions($permission);
-        
+        $role->save();
+
         // $permission = Permission::create(['name' => 'attendance-list']);
         // $role->syncPermissions($permission);
         // $role->syncPermissions($request->permission);

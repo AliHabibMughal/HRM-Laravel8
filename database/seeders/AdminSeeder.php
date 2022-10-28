@@ -30,5 +30,26 @@ class AdminSeeder extends Seeder
         $permissions = Permission::all();
         $role->syncPermissions($permissions);
         $user->assignRole([$role->id]);
+
+        $role = Role::create(['name' => 'HR'])
+        ->syncPermissions([
+            'attendance-index',
+            'attendance-store',
+            'attendance-update',
+            'attendance-destroy',
+            'salary-index',
+            'salary-store',
+            'salary-update',
+            'salary-destroy'
+        ]);
+
+        $role = Role::create(['name' => 'Employee'])
+        ->syncPermissions([
+            'attendance-index',
+            'attendance-store',
+            'attendance-update',
+            'salary-index',
+        ]);
+
     }
 }

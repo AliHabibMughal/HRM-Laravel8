@@ -15,18 +15,18 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         $permissions = [
-            'role-list',
-            'role-create',
-            'role-edit',
-            'role-delete',
-            'attendance-list',
-            'attendance-create',
-            'attendance-edit',
-            'attendance-delete',
-            'salary-list',
-            'salary-create',
-            'salary-edit',
-            'salary-delete'
+            'role-index',
+            'role-store',
+            'role-update',
+            'role-destroy',
+            'attendance-index',
+            'attendance-store',
+            'attendance-update',
+            'attendance-destroy',
+            'salary-index',
+            'salary-store',
+            'salary-update',
+            'salary-destroy'
         ];
 
         foreach ($permissions as $permission) {
