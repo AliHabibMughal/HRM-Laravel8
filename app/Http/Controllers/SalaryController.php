@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Validator;
 
 class SalaryController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:salary-index|salary-create|salary-update|salary-destroy', ['only' => ['index','store']]);
+        $this->middleware('permission:salary-store', ['only' => ['create','store']]);
+        $this->middleware('permission:salary-update', ['only' => ['edit','update']]);
+        $this->middleware('permission:salary-destroy', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

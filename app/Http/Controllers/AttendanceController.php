@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Validator;
 
 class AttendanceController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:attendance-index|attendance-create|attendance-update|attendance-destroy', ['only' => ['index','store']]);
+        $this->middleware('permission:attendance-store', ['only' => ['create','store']]);
+        $this->middleware('permission:attendance-update', ['only' => ['edit','update']]);
+        $this->middleware('permission:attendance-destroy', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
